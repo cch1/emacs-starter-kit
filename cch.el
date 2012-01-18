@@ -8,3 +8,11 @@
 ;; newlines at the end of the file are NOT trimmed.
 (add-hook 'clojure-mode-hook
           (lambda () (add-hook 'local-write-file-hooks '(lambda () (save-excursion (delete-trailing-whitespace))))))
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (require 'ruby-electric)
+            (ruby-electric-mode t)
+            (add-hook 'local-write-file-hooks '(lambda () (save-excursion (delete-trailing-whitespace))))))
+
+
+(add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
