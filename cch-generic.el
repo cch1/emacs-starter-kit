@@ -1,3 +1,4 @@
+(ido-mode t)
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (require 'mouse)
