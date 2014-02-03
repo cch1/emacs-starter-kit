@@ -27,8 +27,6 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; (add-to-list 'load-path "~/.emacs.d/vendor/")
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
