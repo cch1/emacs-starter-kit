@@ -7,7 +7,6 @@
   (setq dired-listing-switches "-aBhl --group-directories-first")
   (setq dired-use-ls-dired nil))
 
-(x-focus-frame nil) ;; open window in front of terminal
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -44,8 +43,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/vendor/")
 ;; (require 'cider)
 
-;; (add-hook 'window-setup-hook 'maximize-frame t)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,7 +50,6 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (manoj-dark)))
- '(inhibit-startup-screen t)
  '(slime-net-coding-system (quote utf-8-unix)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

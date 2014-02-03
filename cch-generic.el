@@ -1,5 +1,11 @@
+(setq inhibit-startup-screen t)
 (require 'mouse)
 (xterm-mouse-mode t)
+
+;; (add-hook 'window-setup-hook 'maximize-frame t)
+
+;; open window in front of terminal
+(x-focus-frame nil)
 
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
