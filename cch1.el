@@ -7,6 +7,8 @@
 ;; Enable whitespace mode
 (global-whitespace-mode t)
 
+(windmove-default-keybindings)
+
 ;; Only show "lonely" whitespace
 (setq whitespace-style (quote (face trailing empty)))
 (setq js-indent-level 2)
