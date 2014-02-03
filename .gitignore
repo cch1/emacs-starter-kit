@@ -1,6 +1,7 @@
-elpa
-places
-backups
-url
-var
+/elpa
+/places
+/backups
+/url
+/var
+/auto-save-list
 .smex-items
