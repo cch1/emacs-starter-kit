@@ -63,3 +63,4 @@
 ;; Personal Hand-crafted customizations 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (require 'cch-generic)
+(require 'cch-clojure)
