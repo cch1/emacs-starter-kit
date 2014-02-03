@@ -6,6 +6,16 @@
 
 ;; (add-hook 'window-setup-hook 'maximize-frame t)
 
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (when window-system
+		(set-frame-size (selected-frame) 150 50)))) ;; make initial frame a reasonable size
+
+(add-hook 'after-make-frame-functions
+	  (lambda ()
+	    (when window-system
+		(set-frame-size (selected-frame) 150 50)))) ;; make subsequent frames a reasonable size
+
 ;; open window in front of terminal
 (x-focus-frame nil)
 
