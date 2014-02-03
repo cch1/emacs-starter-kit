@@ -1,3 +1,15 @@
+(defvar my-clojure-packages
+  '(paredit
+    highlight-parentheses
+    clojure-mode
+    cider
+    midje-mode)
+  "A list of packages to ensure are installed at launch.")
+
+(dolist (p my-clojure-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 (add-hook 'clojure-mode-hook
           (lambda ()
             ;; Trim trailing whitespace on write buffer.

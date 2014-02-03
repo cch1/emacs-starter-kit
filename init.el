@@ -18,22 +18,9 @@
   (package-refresh-contents))
 
 (defvar my-packages
-  '(
-    ;; starter-kit
-    ;; starter-kit-ruby
-    ;; starter-kit-lisp
-    ;; starter-kit-eshell
-    paredit
+  '(paredit
     highlight-parentheses
-    clojure-mode
-    midje-mode
-    cider
-    yaml-mode
-    ;;    color-theme
-    ;;    color-theme-wombat
-    ;;    color-theme-wombat+
-    ;;    color-theme-gruber-darker
-    )
+    yaml-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -41,7 +28,6 @@
     (package-install p)))
 
 ;; (add-to-list 'load-path "~/.emacs.d/vendor/")
-;; (require 'cider)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
