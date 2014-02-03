@@ -19,7 +19,7 @@
     highlight-parentheses
     clojure-mode
     midje-mode
-    nrepl
+    cider
     yaml-mode
     ;;    color-theme
     ;;    color-theme-wombat
@@ -33,7 +33,7 @@
     (package-install p)))
 
 ;; (add-to-list 'load-path "~/.emacs.d/vendor/")
-(require 'nrepl)
+;; (require 'cider)
 
 ;; (add-hook 'window-setup-hook 'maximize-frame t)
 

@@ -29,4 +29,13 @@
             (highlight-parentheses-mode t)
             (paredit-mode t)))
 
-(add-hook 'nrepl-mode-hook 'paredit-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+;; CIDER mode settings
+(setq cider-repl-pop-to-buffer-on-connect nil)
+(setq cider-popup-stacktraces t)
+(setq cider-repl-popup-stacktraces t)
+(setq cider-repl-display-in-current-window t)
+
+
+
