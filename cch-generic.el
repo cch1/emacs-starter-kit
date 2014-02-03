@@ -1,4 +1,5 @@
 (setq inhibit-startup-screen t)
+(tool-bar-mode -1)
 (require 'mouse)
 (xterm-mouse-mode t)
 
