@@ -1,4 +1,3 @@
-;; (put 'dired-find-alternate-file 'disabled nil)
 (when (eq system-type 'darwin)
   ;; (require 'ls-lisp)
   ;; (setq ls-lisp-use-insert-directory-program nil)
