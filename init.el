@@ -63,3 +63,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "WhiteSmoke" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "apple" :family "Monaco"))))
  '(hl-line ((t (:inherit nil :weight extra-bold))) t))
+
+
+;; Personal Hand-crafted customizations 
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(require 'cch-generic)

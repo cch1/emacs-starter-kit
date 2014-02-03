@@ -39,5 +39,4 @@
 (setq cider-repl-popup-stacktraces t)
 (setq cider-repl-display-in-current-window t)
 
-
-
+(provide 'cch-generic)
