@@ -5,6 +5,8 @@
 (xterm-mouse-mode t)
 (setq visible-bell t)
 
+(setq sentence-end-double-space t)
+
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (when window-system
