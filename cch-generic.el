@@ -1,6 +1,7 @@
 (defvar my-packages
   '(paredit
-    highlight-parentheses)
+    highlight-parentheses
+    saveplace)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -8,13 +9,14 @@
     (package-install p)))
 
 (ido-mode t)
-(setq inhibit-startup-screen t)
-(tool-bar-mode -1)
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (require 'mouse)
+
 (xterm-mouse-mode t)
-(setq visible-bell t)
+
+(show-paren-mode 1)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq sentence-end-double-space t)
 
 (add-hook 'after-init-hook
 	  (lambda ()
@@ -32,15 +34,24 @@
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 
+;; Allow moving amongst windows with natural arrow keys + Shift
 (windmove-default-keybindings)
 
 ;; Enable whitespace mode
 (global-whitespace-mode t)
 
-;; Only show "lonely" whitespace
-(setq whitespace-style (quote (face trailing empty)))
+(require 'saveplace)
+(setq-default save-place t)
 
 (setq js-indent-level 2)
-(setq scroll-step 1)
+
+(setq inhibit-startup-screen t
+      visible-bell t
+      apropos-do-all t
+      sentence-end-double-space t
+      whitespace-style (quote (face trailing empty)) ;; Only show "lonely" whitespace
+      scroll-step 1
+      save-place-file (concat user-emacs-directory "places")
+      backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 
 (provide 'cch-generic)
