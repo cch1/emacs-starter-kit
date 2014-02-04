@@ -3,6 +3,7 @@
     highlight-parentheses
     pretty-symbols
     clojure-mode
+    idle-highlight-mode
     auto-complete
     ac-nrepl
     cider
@@ -28,6 +29,7 @@
             ;; Note that trailing newlines at the end of the file are NOT trimmed.
             (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
             (highlight-parentheses-mode t)
+	    (idle-highlight-mode t)
 	    (pretty-symbols-mode t)
             (paredit-mode t)))
 
