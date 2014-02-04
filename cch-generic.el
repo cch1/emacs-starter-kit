@@ -4,7 +4,7 @@
 (require 'mouse)
 (xterm-mouse-mode t)
 (setq visible-bell t)
-
+(defalias 'yes-or-no-p 'y-or-n-p)
 (setq sentence-end-double-space t)
 
 (add-hook 'after-init-hook
