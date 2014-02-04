@@ -5,6 +5,7 @@
 (xterm-mouse-mode t)
 
 ;; (add-hook 'window-setup-hook 'maximize-frame t)
+(setq visible-bell t)
 
 (add-hook 'after-init-hook
 	  (lambda ()
