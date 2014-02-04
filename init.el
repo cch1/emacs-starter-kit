@@ -43,7 +43,11 @@
  '(hl-line ((t (:inherit nil :weight extra-bold))) t))
 
 
-;; Personal Hand-crafted customizations 
+;; Personal Hand-crafted customizations
+;; Inspiration:
+;; http://emacsblog.org/2007/10/07/declaring-emacs-bankruptcy/
+;; http://www.aaronbedra.com/emacs.d/
+;; https://github.com/technomancy/better-defaults/blob/master/better-defaults.el
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (require 'cch-generic)
 (require 'cch-emacs-lisp)
