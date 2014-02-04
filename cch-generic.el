@@ -1,3 +1,12 @@
+(defvar my-packages
+  '(paredit
+    highlight-parentheses)
+  "A list of packages to ensure are installed at launch.")
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 (ido-mode t)
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
