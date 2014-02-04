@@ -10,7 +10,17 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; Inspiration: https://github.com/technomancy/emacs-starter-kit/blob/v2/starter-kit-misc.el
 (ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10)
+
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (require 'mouse)
 
