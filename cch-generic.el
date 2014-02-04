@@ -34,13 +34,4 @@
 (setq js-indent-level 2)
 (setq scroll-step 1)
 
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))))
-(add-hook 'yaml-mode-hook
-          (lambda ()
-            (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))))
-
-(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode t)))
-
 (provide 'cch-generic)

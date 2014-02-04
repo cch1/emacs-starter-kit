@@ -19,8 +19,7 @@
 
 (defvar my-packages
   '(paredit
-    highlight-parentheses
-    yaml-mode)
+    highlight-parentheses)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -47,4 +46,7 @@
 ;; Personal Hand-crafted customizations 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (require 'cch-generic)
+(require 'cch-emacs-lisp)
 (require 'cch-clojure)
+(require 'cch-yaml)
+(require 'cch-ruby)
