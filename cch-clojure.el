@@ -1,6 +1,7 @@
 (defvar my-clojure-packages
   '(paredit
     highlight-parentheses
+    pretty-symbols
     clojure-mode
     auto-complete
     ac-nrepl
@@ -11,6 +12,9 @@
 (dolist (p my-clojure-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(require 'pretty-symbols)
+(add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
 
 ;; https://github.com/clojure-emacs/ac-nrepl
 (require 'ac-nrepl)
@@ -24,6 +28,7 @@
             ;; Note that trailing newlines at the end of the file are NOT trimmed.
             (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
             (highlight-parentheses-mode t)
+	    (pretty-symbols-mode t)
             (paredit-mode t)))
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)

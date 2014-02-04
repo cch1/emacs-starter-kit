@@ -1,7 +1,8 @@
 (defvar my-packages
   '(paredit
     highlight-parentheses
-    saveplace)
+    saveplace
+    pretty-symbols)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -39,6 +40,12 @@
 
 ;; Enable whitespace mode
 (global-whitespace-mode t)
+
+(require 'pretty-symbols)
+(add-to-list 'pretty-symbol-patterns '(?α greek "\\<alpha\\>" (emacs-lisp-mode clojure-mode)))
+(add-to-list 'pretty-symbol-patterns '(?δ greek "\\<delta\\>" (emacs-lisp-mode clojure-mode)))
+(add-to-list 'pretty-symbol-patterns '(?∂ greek "\\<partial\\>" (emacs-lisp-mode clojure-mode)))
+(setq pretty-symbol-categories (list 'lambda 'greek 'relational))
 
 (require 'saveplace)
 (setq-default save-place t)
