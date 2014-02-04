@@ -3,8 +3,6 @@
 (tool-bar-mode -1)
 (require 'mouse)
 (xterm-mouse-mode t)
-
-;; (add-hook 'window-setup-hook 'maximize-frame t)
 (setq visible-bell t)
 
 (add-hook 'after-init-hook
