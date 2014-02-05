@@ -1,6 +1,7 @@
 (defvar my-packages
   '(paredit
     highlight-parentheses
+    smex
     saveplace
     pretty-symbols
     magit)
@@ -11,7 +12,7 @@
     (package-install p)))
 
 ;; Inspiration: https://github.com/technomancy/emacs-starter-kit/blob/v2/starter-kit-misc.el
-(ido-mode t)
+(ido-mode t) ;; ido is built-in since at least 24.3
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-auto-merge-work-directories-length nil
@@ -20,6 +21,11 @@
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
+
+;; smex goodness for executing commands
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; This is 'regular' M-x.
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (require 'mouse)
