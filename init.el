@@ -44,4 +44,5 @@
 (require 'cch-emacs-lisp)
 (require 'cch-clojure)
 (require 'cch-yaml)
+(require 'cch-xml)
 (require 'cch-ruby)
