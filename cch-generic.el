@@ -62,9 +62,13 @@
 
 (require 'pretty-symbols)
 (add-to-list 'pretty-symbol-patterns '(?α greek "\\<alpha\\>" (emacs-lisp-mode clojure-mode)))
+(add-to-list 'pretty-symbol-patterns '(?β greek "\\<beta\\>" (emacs-lisp-mode clojure-mode)))
 (add-to-list 'pretty-symbol-patterns '(?δ greek "\\<delta\\>" (emacs-lisp-mode clojure-mode)))
 (add-to-list 'pretty-symbol-patterns '(?∂ greek "\\<partial\\>" (emacs-lisp-mode clojure-mode)))
-(setq pretty-symbol-categories (list 'lambda 'greek 'relational))
+(add-to-list 'pretty-symbol-patterns '(?∘ greek "\\<comp\\>" (clojure-mode)))
+(add-to-list 'pretty-symbol-patterns '(?⊕ logical "\\<xor\\>" (emacs-lisp-mode clojure-mode)))
+(add-to-list 'pretty-symbol-patterns '(?∘ greek "\\<comp\\>" (clojure-mode)))
+(setq pretty-symbol-categories (list 'lambda 'greek 'relational 'logical))
 
 (require 'saveplace)
 (setq-default save-place t)
