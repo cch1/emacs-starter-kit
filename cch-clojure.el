@@ -30,9 +30,14 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;; CIDER mode settings
+(setq nrepl-hide-special-buffers t) ;; When using switch-to-buffer, pressing SPC after the command will make the hidden buffers visible.
 (setq cider-repl-pop-to-buffer-on-connect nil)
-(setq cider-popup-stacktraces t)
+(setq cider-popup-stacktraces nil)
 (setq cider-repl-popup-stacktraces t)
-(setq cider-repl-display-in-current-window t)
+;; (setq cider-repl-display-in-current-window t)
+(setq cider-auto-select-error-buffer t)
+(setq cider-stacktrace-default-filters '(tooling dup))
+(setq nrepl-buffer-name-show-port t)
+(setq cider-repl-print-length 100)
 
 (provide 'cch-clojure)
