@@ -4,6 +4,7 @@
     smex
     saveplace
     pretty-symbols
+    company
     magit)
   "A list of packages to ensure are installed at launch.")
 
@@ -39,7 +40,8 @@
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (when window-system
-		(set-frame-size (selected-frame) 150 50)))) ;; make initial frame a reasonable size
+		(set-frame-size (selected-frame) 150 50)) ;; make initial frame a reasonable size
+	    (global-company-mode)))
 
 (add-hook 'after-make-frame-functions
 	  (lambda ()

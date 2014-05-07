@@ -4,8 +4,8 @@
     pretty-symbols
     clojure-mode
     idle-highlight-mode
-    auto-complete
-    ac-nrepl
+    company
+    company-cider
     cider
     midje-mode)
   "A list of packages to ensure are installed at launch.")
@@ -16,12 +16,6 @@
 
 (require 'pretty-symbols)
 (add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
-
-;; https://github.com/clojure-emacs/ac-nrepl
-(require 'ac-nrepl)
-(add-hook 'cider-mode-hook 'ac-nrepl-setup)
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'cider-repl-mode))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
@@ -34,7 +28,6 @@
             (paredit-mode t)))
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
-(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
 
 ;; CIDER mode settings
 (setq cider-repl-pop-to-buffer-on-connect nil)
