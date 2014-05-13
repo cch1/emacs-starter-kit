@@ -87,7 +87,9 @@
 (setq js-indent-level 2)
 
 (setq inhibit-startup-screen t
+      inhibit-splash-screen t
       visible-bell t
+;;      debug-on-error t
       apropos-do-all t
       sentence-end-double-space t
       whitespace-style (quote (face trailing empty)) ;; Only show "lonely" whitespace
@@ -96,3 +98,5 @@
       backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 
 (provide 'cch-generic)
+
+;; (server-start)
