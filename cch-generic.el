@@ -97,6 +97,9 @@
       save-place-file (concat user-emacs-directory "places")
       backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 
+(line-number-mode 1)
+(column-number-mode 1)
+
 (provide 'cch-generic)
 
 ;; (server-start)
