@@ -4,7 +4,6 @@
     pretty-symbols
     clojure-mode
     idle-highlight-mode
-    company
     company-cider
     cider
     midje-mode)
