@@ -4,7 +4,6 @@
     pretty-symbols
     clojure-mode
     idle-highlight-mode
-    company-cider
     cider
     midje-mode)
   "A list of packages to ensure are installed at launch.")
