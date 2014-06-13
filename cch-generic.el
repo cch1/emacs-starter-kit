@@ -12,6 +12,7 @@
 (defvar my-packages
   '(paredit
     highlight-parentheses
+    rotate
     smex
     saveplace
     pretty-symbols
@@ -67,6 +68,10 @@
 
 ;; Allow moving amongst windows with natural arrow keys + Shift
 (windmove-default-keybindings)
+
+;; Bind window rotation keys
+(global-set-key (kbd "s-<end>") 'rotate-window)
+(global-set-key (kbd "s-<home>") 'rotate-layout)
 
 ;; Enable whitespace mode
 (global-whitespace-mode t)
