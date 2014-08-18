@@ -70,8 +70,8 @@
 (windmove-default-keybindings)
 
 ;; Bind window rotation keys
-(global-set-key (kbd "s-<end>") 'rotate-window)
-(global-set-key (kbd "s-<home>") 'rotate-layout)
+(global-set-key (kbd "s-<up>") 'rotate-window)
+(global-set-key (kbd "s-<down>") 'rotate-layout)
 
 ;; Enable whitespace mode
 (global-whitespace-mode t)
