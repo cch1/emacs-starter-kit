@@ -32,6 +32,8 @@
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "WhiteSmoke" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "apple" :family "Monaco"))))
  '(hl-line ((t (:inherit nil :weight extra-bold))) t))
 
+(put 'erase-buffer 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; Personal Hand-crafted customizations
 ;; Inspiration:
@@ -42,6 +44,7 @@
 (require 'cch-generic)
 (require 'cch-emacs-lisp)
 (require 'cch-clojure)
+(require 'cch-javascript)
 (require 'cch-yaml)
 (require 'cch-xml)
 (require 'cch-ruby)
