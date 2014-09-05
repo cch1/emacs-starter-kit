@@ -17,6 +17,10 @@
 ;;(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist (cons (rx ".js" eos) 'js2-mode))
 
+(custom-set-variables
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t))
+
 (require 'pretty-symbols)
 (add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
 
