@@ -2,6 +2,7 @@
 
 (defvar my-javascript-packages
   '(js2-mode
+    flycheck
     ac-js2
     json-mode
     jade-mode
@@ -25,6 +26,7 @@
 	  (lambda ()
 	    (skewer-mode)
 	    (ac-js2-mode)
+	    (flycheck-mode t)
 	    (define-key js-mode-map "{" 'paredit-open-curly)
 	    (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
             (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
