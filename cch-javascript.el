@@ -17,14 +17,12 @@
 ;;(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist (cons (rx ".js" eos) 'js2-mode))
 
-(custom-set-variables
- '(js2-basic-offset 2)
- '(js2-bounce-indent-p t))
-
-(require 'pretty-symbols)
-(add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
-
 (setq js2-highlight-level 3)
+
+(setq js2-basic-offset 2)
+(setq js2-bounce-indent-p t)
+(setq js2-include-node-externs t)
+(setq-default js2-global-externs '("describe" "it" "assert"))
 
 ;; http://truongtx.me/2014/02/22/emacs-using-paredit-with-non-lisp-mode/
 (defun my-paredit-nonlisp ()
