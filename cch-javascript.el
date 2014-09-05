@@ -26,20 +26,31 @@
 
 (setq js2-highlight-level 3)
 
+;; http://truongtx.me/2014/02/22/emacs-using-paredit-with-non-lisp-mode/
+(defun my-paredit-nonlisp ()
+  "Turn on paredit mode for non-lisps."
+  (interactive)
+  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+       '((lambda (endp delimiter) nil)))
+  (paredit-mode 1))
+
+(require 'pretty-symbols)
+(add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
+
 (add-hook 'js2-mode-hook
 	  (lambda ()
 	    (skewer-mode)
 	    (ac-js2-mode)
 	    (flycheck-mode t)
+	    (my-paredit-nonlisp)
 	    (define-key js-mode-map "{" 'paredit-open-curly)
 	    (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
-            (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
-	    (pretty-symbols-mode t)))
+	    (company-mode 0) ;; I hope this works
+	    (pretty-symbols-mode 0) ;; Doesn't seem to work with some of the other modes...
+            (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))))
 
 (add-hook 'nodejs-repl-mode-hook
 	  (lambda ()
-	    (paredit-mode t)))
-
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+	    (my-paredit-nonlisp)))
 
 (provide 'cch-javascript)
