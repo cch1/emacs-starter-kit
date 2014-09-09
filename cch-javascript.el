@@ -18,7 +18,6 @@
 (add-to-list 'auto-mode-alist (cons (rx ".js" eos) 'js2-mode))
 
 (setq js2-highlight-level 3)
-
 (setq js2-basic-offset 2)
 (setq js2-bounce-indent-p t)
 (setq js2-include-node-externs t)
@@ -37,6 +36,8 @@
 
 (add-hook 'js2-mode-hook
 	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
 	    (skewer-mode)
 	    (ac-js2-mode)
 	    (flycheck-mode t)
@@ -45,7 +46,7 @@
 	    (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
 	    (company-mode 0) ;; I hope this works
 	    (pretty-symbols-mode 0) ;; Doesn't seem to work with some of the other modes...
-            (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))))
+	    ))
 
 (add-hook 'nodejs-repl-mode-hook
 	  (lambda ()
