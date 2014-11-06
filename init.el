@@ -40,7 +40,7 @@
 ;; http://emacsblog.org/2007/10/07/declaring-emacs-bankruptcy/
 ;; http://www.aaronbedra.com/emacs.d/
 ;; https://github.com/technomancy/better-defaults/blob/master/better-defaults.el
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (locate-user-emacs-file "lisp/"))
 (require 'cch-generic)
 (require 'cch-emacs-lisp)
 (require 'cch-clojure)
