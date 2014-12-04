@@ -63,15 +63,18 @@
 ;; open window in front of terminal
 (x-focus-frame nil)
 
-(global-set-key (kbd "<mouse-4>") 'scroll-down-line)
-(global-set-key (kbd "<mouse-5>") 'scroll-up-line)
-
 ;; Allow moving amongst windows with natural arrow keys + Shift
 (windmove-default-keybindings)
 
 ;; Bind window rotation keys
 (global-set-key (kbd "s-<up>") 'rotate-window)
 (global-set-key (kbd "s-<down>") 'rotate-layout)
+;; Bind fullscreen to be OSX-like
+(global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
+;; Bind mouse motion
+(global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+(global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+
 
 ;; Enable whitespace mode
 (global-whitespace-mode t)
