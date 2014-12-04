@@ -29,7 +29,7 @@
 
 ;; CIDER mode settings
 (setq nrepl-hide-special-buffers t) ;; When using switch-to-buffer, pressing SPC after the command will make the hidden buffers visible.
-(setq cider-repl-pop-to-buffer-on-connect nil)
+(setq cider-repl-pop-to-buffer-on-connect t)
 (setq cider-popup-stacktraces nil)
 (setq cider-repl-popup-stacktraces t)
 ;; (setq cider-repl-display-in-current-window t)
