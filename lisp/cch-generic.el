@@ -24,6 +24,9 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; Stifle spew on magit usage
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;; Inspiration: https://github.com/technomancy/emacs-starter-kit/blob/v2/starter-kit-misc.el
 (ido-mode t) ;; ido is built-in since at least 24.3
 (setq ido-enable-prefix nil
