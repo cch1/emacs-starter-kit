@@ -37,5 +37,6 @@
 (setq cider-stacktrace-default-filters '(tooling dup))
 (setq nrepl-buffer-name-show-port t)
 (setq cider-repl-print-length 100)
+(setq cider-repl-history-file "~/.emacs.d/cache/cider-history")
 
 (provide 'cch-clojure)
