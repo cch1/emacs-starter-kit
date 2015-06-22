@@ -6,8 +6,10 @@
 
 (package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(unless package-archive-contents
+    (package-refresh-contents))
+
+(setq package-load-list '((cider t) all))
 
 (defvar my-packages
   '(paredit
@@ -21,7 +23,7 @@
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
-  (when (not (package-installed-p p))
+  (unless (package-installed-p p)
     (package-install p)))
 
 ;; Stifle spew on magit usage
