@@ -5,12 +5,18 @@
     clojure-mode
     idle-highlight-mode
     cider
-    midje-mode)
+;    midje-mode
+    )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-clojure-packages)
-  (when (not (package-installed-p p))
+  (unless (package-installed-p p)
     (package-install p)))
+
+(add-to-list 'load-path (locate-user-emacs-file "custom-packages/midje-mode"))
+(require 'midje-mode)
+;(require 'clojure-jump-to-file)
+(setq midje-praise-quotes nil)
 
 (require 'pretty-symbols)
 (add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
