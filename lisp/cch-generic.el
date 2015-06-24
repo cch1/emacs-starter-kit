@@ -3,14 +3,19 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
+(setq package-pinned-packages '((cider . "melpa-stable")))
+(setq package-load-list '((cider t) all))
 
 (package-initialize)
 
+(setq package-enable-at-startup nil) ; because we just initialized manually
+
 (unless package-archive-contents
     (package-refresh-contents))
-
-(setq package-load-list '((cider t) all))
 
 (defvar my-packages
   '(paredit
