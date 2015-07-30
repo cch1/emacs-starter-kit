@@ -75,12 +75,14 @@
 ;; open window in front of terminal
 (x-focus-frame nil)
 
-;; Allow moving amongst windows with natural arrow keys + Shift
-(windmove-default-keybindings)
+(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+
+;; Allow moving amongst windows with natural arrow keys + Super (Command/Flower on OSX)
+(windmove-default-keybindings 'super)
 
 ;; Bind window rotation keys
-(global-set-key (kbd "s-<up>") 'rotate-window)
-(global-set-key (kbd "s-<down>") 'rotate-layout)
+(global-set-key (kbd "S-s-<up>") 'rotate-window)
+(global-set-key (kbd "S-s-<down>") 'rotate-layout)
 ;; Bind fullscreen to be OSX-like
 (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
 ;; Bind mouse motion
