@@ -88,7 +88,7 @@
 ;; Bind mouse motion
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
-
+(global-set-key (kbd "<kp-enter>") 'newline)
 
 ;; Enable whitespace mode
 (global-whitespace-mode t)
