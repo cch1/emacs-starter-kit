@@ -48,5 +48,11 @@
 (setq nrepl-buffer-name-show-port t)
 (setq cider-repl-print-length 100)
 (setq cider-repl-history-file "~/.emacs.d/cache/cider-history")
+(setq cider-prompt-save-file-on-load nil) ; C-c C-k
+(setq cider-use-overlays nil) ; Show eval results in minibuffer instead of inline
+
+
+(add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
+(add-hook 'cider-mode-hook #'eldoc-mode)
 
 (provide 'cch-clojure)

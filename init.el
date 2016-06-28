@@ -46,6 +46,7 @@
    ["#3f3f3f" "#ea3838" "#7fb07f" "#fe8b04" "#62b6ea" "#e353b9" "#1fb3b3" "#d5d2be"])
  '(background-color "#fdf6e3")
  '(background-mode light)
+ '(cider-lein-parameters "with-profile +log4c repl :headless")
  '(column-number-mode t)
  '(cursor-color "#657b83")
  '(custom-enabled-themes (quote (tango-dark)))
