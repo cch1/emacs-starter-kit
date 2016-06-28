@@ -19,6 +19,7 @@
 
 (defvar my-packages
   '(paredit
+    log4j-mode
     highlight-parentheses
     rotate
     smex
