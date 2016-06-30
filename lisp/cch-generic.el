@@ -74,7 +74,7 @@
 		(set-frame-size (selected-frame) 150 50)))) ;; make subsequent frames a reasonable size
 
 ;; open window in front of terminal
-(x-focus-frame nil)
+(when window-system (x-focus-frame nil))
 
 (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
 
