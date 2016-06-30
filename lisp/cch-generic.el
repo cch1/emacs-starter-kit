@@ -111,7 +111,6 @@
 
 (setq inhibit-startup-screen t
       inhibit-splash-screen t
-      visible-bell t
 ;;      debug-on-error t
       apropos-do-all t
       sentence-end-double-space t
@@ -126,3 +125,9 @@
 (provide 'cch-generic)
 
 ;; (server-start)
+
+;; work around a bug in OSX with visible bell not restoring screen properly
+(setq visible-bell nil
+      ring-bell-function (lambda ()
+			   (invert-face 'mode-line)
+			   (run-with-timer 0.1 nil 'invert-face 'mode-line)))
