@@ -4,7 +4,8 @@
     pretty-symbols
     clojure-mode
     idle-highlight-mode
-    cider)
+    cider
+    eldoc)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-clojure-packages)
@@ -19,6 +20,7 @@
   (idle-highlight-mode t)
   (pretty-symbols-mode t)
   (paredit-mode t)
+  (eldoc-mode t)
   (local-set-key (kbd "{") 'paredit-open-curly))
 
 (add-hook 'clojure-mode-hook
@@ -44,8 +46,6 @@
 (setq cider-prompt-save-file-on-load nil) ; C-c C-k
 (setq cider-use-overlays nil) ; Show eval results in minibuffer instead of inline
 
-
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
-(add-hook 'cider-mode-hook #'eldoc-mode)
 
 (provide 'cch-clojure)
