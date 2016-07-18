@@ -24,7 +24,7 @@
     rotate
     smex
     saveplace
-    pretty-symbols
+    prettify-greek
     company
     magit
     org)
@@ -95,14 +95,18 @@
 (global-whitespace-mode t)
 
 (require 'pretty-symbols)
-(add-to-list 'pretty-symbol-patterns '(?α greek "\\<alpha\\>" (emacs-lisp-mode clojure-mode)))
-(add-to-list 'pretty-symbol-patterns '(?β greek "\\<beta\\>" (emacs-lisp-mode clojure-mode)))
-(add-to-list 'pretty-symbol-patterns '(?δ greek "\\<delta\\>" (emacs-lisp-mode clojure-mode)))
-(add-to-list 'pretty-symbol-patterns '(?∂ greek "\\<partial\\>" (emacs-lisp-mode clojure-mode)))
 (add-to-list 'pretty-symbol-patterns '(?∘ greek "\\<comp\\>" (clojure-mode)))
-(add-to-list 'pretty-symbol-patterns '(?⊕ logical "\\<xor\\>" (emacs-lisp-mode clojure-mode)))
 (add-to-list 'pretty-symbol-patterns '(?∘ greek "\\<comp\\>" (clojure-mode)))
 (setq pretty-symbol-categories (list 'lambda 'greek 'relational 'logical))
+
+(require 'prettify-greek)
+(defvar cch/prettify-logical '(("and" . ?∧) ("or" . ?∨) ("not" . ?¬) ("xor" . ?⊕)
+			       ("nor" . ?⊽) ("nand" . ?⊼)))
+(defvar cch/prettify-relational '(("not=" . ?≠) (">=" . ?≥) ("<=" . ?≤)))
+(defvar cch/prettify-set '(("union" . ?∪) ("intersection" . ?∩)))
+(defvar cch/prettify-extra '(
+			       ("delta" . ?∂) ;; what is this really?
+			       ))
 
 (require 'saveplace)
 (setq-default save-place t)

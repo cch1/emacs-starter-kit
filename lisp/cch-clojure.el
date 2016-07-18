@@ -1,7 +1,6 @@
 (defvar my-clojure-packages
   '(paredit
     highlight-parentheses
-    pretty-symbols
     clojure-mode
     idle-highlight-mode
     cider
@@ -12,16 +11,39 @@
   (unless (package-installed-p p)
     (package-install p)))
 
-(require 'pretty-symbols)
-(add-to-list 'pretty-symbol-patterns '(?ƒ lambda "\\<fn\\>" (clojure-mode)))
-
 (defun lisp-editing-behavior ()
   (highlight-parentheses-mode t)
   (idle-highlight-mode t)
-  (pretty-symbols-mode t)
+  (setq prettify-symbols-alist (append cch/prettify-logical cch/prettify-relational
+				       cch/prettify-set
+				       prettify-greek-lower prettify-greek-upper
+				       '(("#{}" . ?∅)
+					 ("fn" . ?ƒ) ("=>" . ?⟹)
+					 ("partial" . ?∂) ("comp" . ?∘) ("complement" . ?∁))))
+  (prettify-symbols-mode t)
   (paredit-mode t)
   (eldoc-mode t)
   (local-set-key (kbd "{") 'paredit-open-curly))
+
+(eval-after-load 'clojure-mode
+  ;; We need this level of control for some essential keywords that must be identified by regexp
+  (font-lock-add-keywords
+   'clojure-mode `(("\\(#\\)("		; anonymous function
+		    (0 (progn (compose-region (match-beginning 1)
+					      (match-end 1) "λ")
+			      nil)))
+		   ("\\(#\\){[^}]"	; sets, but not the empty set
+		    (0 (progn (compose-region (match-beginning 1)
+					      (match-end 1) "∈")
+			      nil)))
+		   ("\\(->\\)[^>]"	; thread, but not thread-last
+		    (0 (progn (compose-region (match-beginning 1)
+					      (match-end 1) "→")
+			      nil)))
+		   ("\\(->>\\)"		; thread-last
+		    (0 (progn (compose-region (match-beginning 1)
+					      (match-end 1) '(?→ (Br . Bc) ?→))
+			      nil))))))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
