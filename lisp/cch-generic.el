@@ -126,6 +126,9 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+;;; https://github.com/anschwa/emacs.d
+(setq-default x-stretch-cursor t)
+
 (provide 'cch-generic)
 
 ;; (server-start)
