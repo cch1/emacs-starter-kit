@@ -28,6 +28,11 @@
             ;; Trim trailing whitespace on write buffer.
             ;; Note that trailing newlines at the end of the file are NOT trimmed.
             (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
+	    ;; https://github.com/clojure-emacs/clojure-mode/#indentation-options
+	    (define-clojure-indent
+	      (fact 1)
+	      (facts 1)
+	      (future-fact 1))
 	    (lisp-editing-behavior)))
 
 (add-hook 'cider-repl-mode-hook 'lisp-editing-behavior)
