@@ -54,7 +54,8 @@
 	    (define-clojure-indent
 	      (fact 1)
 	      (facts 1)
-	      (future-fact 1))
+	      (future-fact 1)
+	      (provided 0))
 	    (lisp-editing-behavior)))
 
 (add-hook 'cider-repl-mode-hook 'lisp-editing-behavior)
