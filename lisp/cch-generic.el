@@ -86,6 +86,9 @@
 (global-set-key (kbd "S-s-<down>") 'rotate-layout)
 ;; Bind fullscreen to be OSX-like
 (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
+;; Bind font scaling to conventional keys
+(global-set-key (kbd "s-<kp-add>") 'text-scale-increase)
+(global-set-key (kbd "s-<kp-subtract>") 'text-scale-decrease)
 ;; Bind mouse motion
 (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
