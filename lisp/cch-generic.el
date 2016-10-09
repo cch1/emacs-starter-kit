@@ -141,3 +141,8 @@
       ring-bell-function (lambda ()
 			   (invert-face 'mode-line)
 			   (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+
+;; Get full path of file buffers in window/frame title
+(setq frame-title-format
+      (list (format "%s %%S: %%j " (system-name))
+	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
