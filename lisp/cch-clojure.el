@@ -51,10 +51,13 @@
             ;; Note that trailing newlines at the end of the file are NOT trimmed.
             (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
 	    ;; https://github.com/clojure-emacs/clojure-mode/#indentation-options
+	    ;; http://cider.readthedocs.io/en/latest/indent_spec/
 	    (define-clojure-indent
 	      (fact 1)
 	      (facts 1)
 	      (future-fact 1)
+	      (background 0)
+	      (against-background 1)
 	      (provided 0))
 	    (lisp-editing-behavior)))
 
