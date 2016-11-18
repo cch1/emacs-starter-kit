@@ -132,7 +132,8 @@
 ;;; https://github.com/anschwa/emacs.d
 (setq-default x-stretch-cursor t)
 
-(provide 'cch-generic)
+(add-hook 'text-mode-hook #'bug-reference-mode)
+(add-hook 'prog-mode-hook #'bug-reference-prog-mode)
 
 ;; (server-start)
 
@@ -146,3 +147,5 @@
 (setq frame-title-format
       (list (format "%s %%S: %%j " (system-name))
 	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+(provide 'cch-generic)
