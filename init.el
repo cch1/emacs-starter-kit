@@ -77,7 +77,7 @@ static char *note[] = {
 \"#######..#\" };")))
  '(fci-rule-color "#222222")
  '(foreground-color "#657b83")
- '(gnus-logo-colors (quote ("#528d8d" "#c0c0c0")))
+ '(gnus-logo-colors (quote ("#528d8d" "#c0c0c0")) t)
  '(gnus-mode-line-image-cache
    (quote
     (image :type xpm :ascent center :data "/* XPM */
@@ -100,7 +100,7 @@ static char *gnus-pointer[] = {
 \"######..###.######\",
 \"###....####.######\",
 \"###..######.######\",
-\"###########.######\" };")))
+\"###########.######\" };")) t)
  '(linum-format "%3i")
  '(powerline-color1 "#3d3d68")
  '(powerline-color2 "#292945")
