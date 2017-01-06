@@ -77,6 +77,7 @@
 (setq cider-repl-history-file "~/.emacs.d/cache/cider-history")
 (setq cider-prompt-save-file-on-load nil) ; C-c C-k
 (setq cider-use-overlays nil) ; Show eval results in minibuffer instead of inline
+(setq cider-repl-display-help-banner nil) ; suppress start-up help banner
 
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
 
