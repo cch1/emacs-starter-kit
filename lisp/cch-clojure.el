@@ -4,7 +4,8 @@
     clojure-mode
     idle-highlight-mode
     cider
-    eldoc)
+    eldoc
+    logview)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-clojure-packages)
@@ -80,5 +81,12 @@
 (setq cider-repl-display-help-banner nil) ; suppress start-up help banner
 
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
+
+(logview-additional-submodes (quote
+    (("RK"
+      (format . "TIMESTAMP LEVEL THREAD NAME")
+      (levels . "SLF4J")
+      (timestamp)
+      (aliases)))))
 
 (provide 'cch-clojure)
