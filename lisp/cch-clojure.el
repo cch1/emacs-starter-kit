@@ -66,7 +66,7 @@
 (add-hook 'cider-clojure-interaction-mode 'lisp-editing-behavior)
 
 ;; CIDER mode settings
-(setq nrepl-hide-special-buffers t) ;; When using switch-to-buffer, pressing SPC after the command will make the hidden buffers visible.
+(setq nrepl-hide-special-buffers f) ;; When using switch-to-buffer, pressing SPC after the command will make the hidden buffers visible.
 (setq cider-repl-pop-to-buffer-on-connect t)
 (setq cider-popup-stacktraces nil)
 (setq cider-repl-popup-stacktraces t)
