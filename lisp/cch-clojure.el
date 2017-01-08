@@ -82,7 +82,7 @@
 
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
 
-(logview-additional-submodes (quote
+(setq logview-additional-submodes (quote
     (("RK"
       (format . "TIMESTAMP LEVEL THREAD NAME")
       (levels . "SLF4J")
