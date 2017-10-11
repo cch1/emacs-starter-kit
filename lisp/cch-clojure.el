@@ -22,6 +22,7 @@
 					 ("fn" . ?ƒ) ("=>" . ?⟹)
 					 ("partial" . ?∂) ("comp" . ?∘) ("complement" . ?∁))))
   (prettify-symbols-mode t)
+  (subword-mode t)
   (paredit-mode t)
   (eldoc-mode t)
   (local-set-key (kbd "{") 'paredit-open-curly))
