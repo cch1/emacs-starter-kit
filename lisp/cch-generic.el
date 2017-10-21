@@ -148,4 +148,11 @@
       (list (format "%s %%S: %%j " (system-name))
 	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
+;; Auto-save to system temp dir
+;; https://www.emacswiki.org/emacs/AutoSave
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 (provide 'cch-generic)
