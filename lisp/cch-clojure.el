@@ -1,5 +1,6 @@
 (defvar my-clojure-packages
   '(paredit
+    aggressive-indent
     highlight-parentheses
     clojure-mode
     idle-highlight-mode
@@ -24,6 +25,7 @@
   (prettify-symbols-mode t)
   (subword-mode t)
   (paredit-mode t)
+  (aggressive-indent-mode t)
   (eldoc-mode t)
   (local-set-key (kbd "{") 'paredit-open-curly))
 
