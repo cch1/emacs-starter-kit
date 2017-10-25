@@ -17,11 +17,11 @@
   (highlight-parentheses-mode t)
   (idle-highlight-mode t)
   (setq prettify-symbols-alist (append cch/prettify-logical cch/prettify-relational
-				       cch/prettify-set
-				       prettify-greek-lower prettify-greek-upper
-				       '(("#{}" . ?∅)
-					 ("fn" . ?ƒ) ("=>" . ?⟹)
-					 ("partial" . ?∂) ("comp" . ?∘) ("complement" . ?∁))))
+  				       cch/prettify-set
+  				       prettify-greek-lower prettify-greek-upper
+  				       '(("#{}" . ?∅)
+  					 ("fn" . ?ƒ) ("=>" . ?⟹)
+  					 ("partial" . ?∂) ("comp" . ?∘) ("complement" . ?∁))))
   (prettify-symbols-mode t)
   (subword-mode t)
   (paredit-mode t)
@@ -51,9 +51,20 @@
 
 (add-hook 'clojure-mode-hook
           (lambda ()
-            ;; Trim trailing whitespace on write buffer.
-            ;; Note that trailing newlines at the end of the file are NOT trimmed.
-            (add-hook 'local-write-file-hooks (lambda () (save-excursion (delete-trailing-whitespace))))
+            (add-hook 'before-save-hook (lambda () (save-excursion
+						;; re-indent without prettify
+						(prettify-symbols-mode -1)
+						(indent-region (point-min) (point-max))
+						;; Trim trailing whitespace on write buffer.
+						;; Note that trailing newlines at the end of the file are NOT trimmed.
+						(delete-trailing-whitespace)))
+		      nil 'local)
+	    (add-hook 'after-save-hook (lambda () (save-excursion
+					       ;; re-indent with prettify
+					       (prettify-symbols-mode 't)
+					       (indent-region (point-min) (point-max))
+					       (set-buffer-modified-p nil)))
+		      nil 'local)
 	    ;; https://github.com/clojure-emacs/clojure-mode/#indentation-options
 	    ;; http://cider.readthedocs.io/en/latest/indent_spec/
 	    (define-clojure-indent
