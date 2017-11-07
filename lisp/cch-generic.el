@@ -94,6 +94,9 @@
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 (global-set-key (kbd "<kp-enter>") 'newline)
 
+;; bind magit to ^Xg
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Enable whitespace mode
 (global-whitespace-mode t)
 
