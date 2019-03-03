@@ -29,7 +29,8 @@
     prettify-greek
     company
     magit
-    org)
+    org
+    pandoc-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
