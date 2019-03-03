@@ -29,6 +29,7 @@
 (require 'cch-generic)
 (require 'cch-emacs-lisp)
 (require 'cch-clojure)
+(require 'cch-clojurescript)
 (require 'cch-javascript)
 (require 'cch-yaml)
 (require 'cch-xml)
