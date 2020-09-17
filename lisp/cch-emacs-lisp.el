@@ -1,6 +1,5 @@
 (defvar my-emacs-lisp-packages
-  '(paredit
-    highlight-parentheses)
+  '(paredit)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-emacs-lisp-packages)

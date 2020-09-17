@@ -73,7 +73,6 @@
 (add-hook 'cider-clojure-interaction-mode 'lisp-editing-behavior)
 
 ;; CIDER mode settings
-(setq nrepl-hide-special-buffers nil) ;; When using switch-to-buffer, pressing SPC after the command will make the hidden buffers visible.
 (setq cider-repl-pop-to-buffer-on-connect t)
 (setq cider-popup-stacktraces nil)
 (setq cider-repl-popup-stacktraces t)
@@ -86,6 +85,8 @@
 (setq cider-prompt-save-file-on-load nil) ; C-c C-k
 (setq cider-use-overlays nil) ; Show eval results in minibuffer instead of inline
 (setq cider-repl-display-help-banner nil) ; suppress start-up help banner
+(setq cider-redirect-server-output-to-repl nil) ; per Bozhidar https://github.com/clojure-emacs/cider/pull/1907#issuecomment-475938304
+(setq cider-clojure-cli-global-options "-A:dev")
 
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
 
@@ -95,5 +96,13 @@
       (levels . "SLF4J")
       (timestamp)
       (aliases)))))
+
+
+(defun lcs-prompt-for-jack-in-options (orig-fn project-type)
+  (interactive)
+  (let ((res (funcall orig-fn project-type)))
+    (read-string "Additional options: " res)))
+
+(advice-add 'cider-jack-in-global-options :around #'lcs-prompt-for-jack-in-options)
 
 (provide 'cch-clojure)
