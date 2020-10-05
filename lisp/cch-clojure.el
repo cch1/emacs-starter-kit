@@ -6,6 +6,7 @@
     idle-highlight-mode
     cider
     eldoc
+    company
     logview)
   "A list of packages to ensure are installed at launch.")
 
