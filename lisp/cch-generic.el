@@ -55,6 +55,7 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; This is 'regular' M-x.
+(global-unset-key (kbd "C-z")) ; C-x before C-z to really suspend-frame
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (require 'mouse)
