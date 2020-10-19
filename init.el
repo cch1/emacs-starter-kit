@@ -34,13 +34,12 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#3f3f3f" "#ea3838" "#7fb07f" "#fe8b04" "#62b6ea" "#e353b9" "#1fb3b3" "#d5d2be"])
- '(custom-enabled-themes (quote (tango-dark)))
- '(diary-entry-marker (quote font-lock-variable-name-face))
+ '(custom-enabled-themes '(tango-dark))
+ '(diary-entry-marker 'font-lock-variable-name-face)
  '(fci-rule-color "#222222")
  '(linum-format "%3i")
  '(package-selected-packages
-   (quote
-    (yaml-mode sws-mode smex rotate pretty-symbols prettify-greek paredit pandoc-mode org nodejs-repl mustache-mode mbo70s-theme markdown-mode magit logview json-mode jade-mode intero inf-clojure idle-highlight-mode highlight-parentheses grunt go-mode exec-path-from-shell emidje csv-mode color-theme-solarized color-theme-sanityinc-solarized color-theme-emacs-revert-theme color-theme-dg color-theme-complexity color-theme-actress bubbleberry-theme badger-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ac-js2)))
+   '(gh-md grip-mode yaml-mode sws-mode smex rotate pretty-symbols prettify-greek paredit pandoc-mode org nodejs-repl mustache-mode mbo70s-theme markdown-mode magit logview json-mode jade-mode intero inf-clojure idle-highlight-mode highlight-parentheses grunt go-mode exec-path-from-shell emidje csv-mode color-theme-solarized color-theme-sanityinc-solarized color-theme-emacs-revert-theme color-theme-dg color-theme-complexity color-theme-actress bubbleberry-theme badger-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ac-js2))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
