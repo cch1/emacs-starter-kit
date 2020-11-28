@@ -28,8 +28,11 @@
     company
     magit
     org
-    pandoc-mode)
+    pandoc-mode
+    editorconfig)
   "A list of packages to ensure are installed at launch.")
+
+(editorconfig-mode 1)
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
