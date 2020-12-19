@@ -75,20 +75,21 @@
 (add-hook 'cider-clojure-interaction-mode 'lisp-editing-behavior)
 
 ;; CIDER mode settings
-(setq cider-repl-pop-to-buffer-on-connect t)
-(setq cider-popup-stacktraces nil)
-(setq cider-repl-popup-stacktraces t)
-;; (setq cider-repl-display-in-current-window t)
 (setq cider-auto-select-error-buffer t)
-(setq cider-stacktrace-default-filters '(tooling dup))
-(setq nrepl-buffer-name-show-port t)
-(setq cider-repl-print-length 100)
-(setq cider-repl-history-file "~/.emacs.d/cache/cider-history")
-(setq cider-prompt-save-file-on-load nil) ; C-c C-k
-(setq cider-use-overlays nil) ; Show eval results in minibuffer instead of inline
-(setq cider-repl-display-help-banner nil) ; suppress start-up help banner
-(setq cider-redirect-server-output-to-repl nil) ; per Bozhidar https://github.com/clojure-emacs/cider/pull/1907#issuecomment-475938304
 (setq cider-clojure-cli-global-options "-A:dev")
+(setq cider-popup-stacktraces nil)
+(setq cider-prompt-save-file-on-load nil) ; C-c C-k
+(setq cider-redirect-server-output-to-repl nil) ; per Bozhidar https://github.com/clojure-emacs/cider/pull/1907#issuecomment-475938304
+(setq cider-repl-buffer-size-limit 100000)
+(setq cider-repl-display-help-banner nil) ; suppress start-up help banner
+;; (setq cider-repl-display-in-current-window t)
+(setq cider-repl-history-file "~/.emacs.d/cache/cider-history")
+(setq cider-repl-pop-to-buffer-on-connect t)
+(setq cider-repl-popup-stacktraces t)
+(setq cider-repl-print-length 100)
+(setq cider-stacktrace-default-filters '(tooling dup))
+(setq cider-use-overlays nil) ; Show eval results in minibuffer instead of inline
+(setq nrepl-buffer-name-show-port t)
 
 (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
 
