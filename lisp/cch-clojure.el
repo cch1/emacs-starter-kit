@@ -17,6 +17,7 @@
 (defun lisp-editing-behavior ()
   (highlight-parentheses-mode t)
   (idle-highlight-mode t)
+  (setq scroll-conservatively 101)
   (setq prettify-symbols-alist (append cch/prettify-logical cch/prettify-relational
   				       cch/prettify-set
   				       prettify-greek-lower prettify-greek-upper
