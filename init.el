@@ -39,7 +39,11 @@
  '(fci-rule-color "#222222")
  '(linum-format "%3i")
  '(package-selected-packages
-   '(gh-md grip-mode yaml-mode sws-mode smex rotate pretty-symbols prettify-greek paredit pandoc-mode org nodejs-repl mustache-mode mbo70s-theme markdown-mode magit logview json-mode jade-mode intero inf-clojure idle-highlight-mode highlight-parentheses grunt go-mode exec-path-from-shell emidje csv-mode color-theme-solarized color-theme-sanityinc-solarized color-theme-emacs-revert-theme color-theme-dg color-theme-complexity color-theme-actress bubbleberry-theme badger-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ac-js2))
+   '(editorconfig dockerfile-mode gh-md grip-mode yaml-mode sws-mode smex rotate pretty-symbols prettify-greek paredit pandoc-mode org nodejs-repl mustache-mode mbo70s-theme markdown-mode magit logview json-mode jade-mode intero inf-clojure idle-highlight-mode highlight-parentheses grunt go-mode exec-path-from-shell emidje csv-mode color-theme-solarized color-theme-sanityinc-solarized color-theme-emacs-revert-theme color-theme-dg color-theme-complexity color-theme-actress bubbleberry-theme badger-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ac-js2))
+ '(safe-local-variable-values
+   '((cider-clojure-cli-global-options . "-A:inspect/rebl-jdk8")
+     (cider-clojure-cli-global-options . "-A:rebl-jdk8")
+     (cider-clojure-cli-global-options . "-M:lib/cider-nrepl:inspect/rebl:middleware/nrebl")))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
