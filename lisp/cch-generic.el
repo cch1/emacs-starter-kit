@@ -70,13 +70,17 @@
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (when window-system
-		(set-frame-size (selected-frame) 150 50)) ;; make initial frame a reasonable size
+	      ;; make initial frame a reasonable size
+	      (set-frame-height (selected-frame) 50)
+	      (set-frame-width (selected-frame) 150))
 	    (global-company-mode)))
 
 (add-hook 'after-make-frame-functions
 	  (lambda ()
 	    (when window-system
-		(set-frame-size (selected-frame) 150 50)))) ;; make subsequent frames a reasonable size
+	      ;; make subsequent frames a reasonable size
+	      (set-frame-height (selected-frame) 50)
+	      (set-frame-width (selected-frame) 150))))
 
 ;; open window in front of terminal
 (when window-system (x-focus-frame nil))
