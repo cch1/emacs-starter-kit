@@ -10,6 +10,9 @@
 (setq package-pinned-packages '((cider . "melpa-stable")))
 (setq package-load-list '((cider t) all))
 
+(custom-set-variables
+ '(gnutls-algorithm-priority "normal:-vers-tls1.3"))
+
 (package-initialize)
 
 (setq package-enable-at-startup nil) ; because we just initialized manually
