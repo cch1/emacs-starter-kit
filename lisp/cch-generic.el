@@ -279,10 +279,8 @@
 
 (use-package bug-reference
   :ensure t
-  :hook (text-mode)
-  :config
-  (add-hook 'prog-mode-hook #'bug-reference-prog-mode))
-
+  :hook ((text-mode . bug-reference-mode)
+	 (prog-mode . bug-reference-prog-mode)))
 
 ;; (server-start)
 
