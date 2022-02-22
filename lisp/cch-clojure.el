@@ -1,4 +1,25 @@
+;; https://github.com/clojure-emacs/clojure-mode/#indentation-options
+;; http://cider.readthedocs.io/en/latest/indent_spec/
+(defun before-save-unprettify ()
+  (save-excursion
+    ;; re-indent without prettify
+    (prettify-symbols-mode -1)
+    (indent-region (point-min) (point-max))
+    ;; Trim trailing whitespace on write buffer.
+    ;; Note that trailing newlines at the end of the file are NOT trimmed.
+    (delete-trailing-whitespace)))
+
+(defun after-save-reprettify ()
+  (save-excursion
+    ;; re-indent with prettify
+    (prettify-symbols-mode 't)
+    (indent-region (point-min) (point-max))
+    (set-buffer-modified-p nil)))
+
 (defun lisp-editing-behavior ()
+  ;; https://github.com/jwiegley/use-package/issues/668
+  (add-hook 'before-save-hook #'before-save-unprettify nil t)
+  (add-hook 'after-save-hook  #'after-save-reprettify nil t)
   ;; prettify-symbols-alist is buffer-local and must be set in a hook.
   (setq prettify-symbols-alist (append cch/prettify-logical cch/prettify-relational
   				       cch/prettify-set
@@ -25,24 +46,6 @@
      (0 (progn (compose-region (match-beginning 1)
 			       (match-end 1) '(?→ (Br . Bc) ?→))
 	       nil)))))
-
-;; https://github.com/clojure-emacs/clojure-mode/#indentation-options
-;; http://cider.readthedocs.io/en/latest/indent_spec/
-(defun before-save-unprettify ()
-  (save-excursion
-    ;; re-indent without prettify
-    (prettify-symbols-mode -1)
-    (indent-region (point-min) (point-max))
-    ;; Trim trailing whitespace on write buffer.
-    ;; Note that trailing newlines at the end of the file are NOT trimmed.
-    (delete-trailing-whitespace)))
-
-(defun after-save-reprettify ()
-  (save-excursion
-    ;; re-indent with prettify
-    (prettify-symbols-mode 't)
-    (indent-region (point-min) (point-max))
-    (set-buffer-modified-p nil)))
 
 (defun lcs-prompt-for-jack-in-options (orig-fn project-type)
   (interactive)
@@ -78,11 +81,7 @@
   :hook ((clojure-mode . lisp-editing-behavior))
   :init
   (mapc (lambda (mode) (font-lock-add-keywords mode clojurey-mode-keywords)) '(clojure-mode clojurescript-mode clojurec-mode))
-  (setq scroll-conservatively 101)
-  ;; https://github.com/jwiegley/use-package/issues/668
-  ;; (add-hook 'clojure-mode #'lisp-editing-behavior)
-  (add-hook 'before-save-hook #'before-save-unprettify nil :local)
-  (add-hook 'after-save-hook  #'after-save-reprettify nil :local))
+  (setq scroll-conservatively 101))
 
 (use-package cider
   :ensure t
