@@ -264,7 +264,7 @@
 
 (setq inhibit-startup-screen t
       inhibit-splash-screen t
-      debug-on-error t
+      debug-on-error nil
       apropos-do-all t
       sentence-end-double-space t
       whitespace-style (quote (face trailing empty)) ;; Only show "lonely" whitespace
