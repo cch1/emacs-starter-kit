@@ -76,7 +76,7 @@
   (default ((t (:inherit nil :extend nil :stipple nil :background "Black" :foreground "#c6c6c6"
 			 :inverse-video nil :box nil :strike-through nil :overline nil :underline nil
 			 :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo"))))
-  (idle-highlight ((t (:background "gray20")))))
+  (idle-highlight ((t (:background "dim gray")))))
 
 ;; https://emacsthemes.com/themes/solarized-themes.html
 '(use-package solarized-theme

@@ -36,10 +36,3 @@
  '(package-selected-packages
    '(prog-mode prettify-symbols-mode prettify-symbols ido-mode yaml-mode use-package terraform-doc tangotango-theme tango-plus-theme sws-mode solarized-theme smex rotate pretty-symbols prettify-greek paredit pandoc-mode org nodejs-repl mustache-mode molokai-theme moe-theme mbo70s-theme markdown-mode magit logview json-mode jade-mode intero inf-clojure idle-highlight-mode highlight-parentheses grunt grip-mode go-mode gh-md fic-mode exec-path-from-shell emidje editorconfig dockerfile-mode csv-mode company-terraform color-theme-solarized color-theme-sanityinc-solarized color-theme-emacs-revert-theme color-theme-dg color-theme-complexity color-theme-actress bubbleberry-theme badger-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ac-js2))
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "Black" :foreground "#c6c6c6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo"))))
- '(idle-highlight ((t (:background "gray20")))))
