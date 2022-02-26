@@ -284,11 +284,12 @@
 
 ;; (server-start)
 
-;; work around a bug in OSX with visible bell not restoring screen properly
-;; (setq visible-bell nil
-;;       ring-bell-function (lambda ()
-;; 			   (invert-face 'mode-line)
-;; 			   (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+;; PReviously it just was to work around a bug in OSX with visible bell not.
+;; restoring screen properly.  Now I prefer it to an actual beep
+(setq visible-bell nil
+      ring-bell-function (lambda ()
+			   (invert-face 'mode-line)
+			   (run-with-timer 0.1 nil 'invert-face 'mode-line)))
 
 ;; Get full path of file buffers in window/frame title
 (setq frame-title-format
