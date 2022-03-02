@@ -93,10 +93,14 @@
    :load-path "themes"
    :config (load-theme 'tangotango t))
 
-(use-package fic-mode
+;; (use-package fic-mode
+;;   :ensure t
+;;   :diminish fic-mode
+;;   :hook (prog-mode))
+
+(use-package hl-todo
   :ensure t
-  :diminish fic-mode
-  :hook (prog-mode))
+  :hook ((prog-mode) . hl-todo-mode))
 
 (use-package magit
   :ensure t
