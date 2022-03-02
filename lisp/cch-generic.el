@@ -76,7 +76,8 @@
   (default ((t (:inherit nil :extend nil :stipple nil :background "Black" :foreground "#c6c6c6"
 			 :inverse-video nil :box nil :strike-through nil :overline nil :underline nil
 			 :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo"))))
-  (idle-highlight ((t (:background "dim gray")))))
+  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html
+  (idle-highlight ((t (:box (:line-width -1 :color "grey75"))))))
 
 ;; https://emacsthemes.com/themes/solarized-themes.html
 '(use-package solarized-theme
@@ -164,7 +165,8 @@
   ;; https://gitlab.com/ideasman42/emacs-idle-highlight-mode/
 (use-package idle-highlight-mode
   :diminish idle-highlight-mode
-  :hook (prog-mode))
+  :hook (prog-mode)
+  :config (setq idle-highlight-exclude-point t))
 
 (use-package subword
   :diminish subword-mode
