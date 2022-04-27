@@ -283,6 +283,14 @@
 ;;; https://github.com/anschwa/emacs.d
 (setq-default x-stretch-cursor t)
 
+(use-package origami
+  :ensure t
+  :config (global-origami-mode)
+  :bind (("M-<kp-multiply>" . origami-open-all-nodes)
+	 ("M-<kp-divide>" . origami-close-all-nodes)
+	 ("M-<kp-add>" . origami-show-node)
+	 ("M-<kp-subtract>" . origami-close-node)))
+
 (use-package bug-reference
   :ensure t
   :hook ((text-mode . bug-reference-mode)
