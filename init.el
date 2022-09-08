@@ -10,6 +10,9 @@
 (put 'erase-buffer 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load-file custom-file)
+
 ;; Personal Hand-crafted customizations
 ;; Inspiration:
 ;; http://emacsblog.org/2007/10/07/declaring-emacs-bankruptcy/
@@ -24,31 +27,3 @@
 (require 'cch-yaml)
 (require 'cch-xml)
 (require 'cch-ruby)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("5e2cdea6453f8963037723ab91c779b203fb201bf5c377094440f0c465d688ec" default))
- '(gnutls-algorithm-priority "normal:-vers-tls1.3")
- '(package-selected-packages
-   '(git-gutter git-gutter-fringe origami hl-todo which-key prog-mode prettify-symbols-mode prettify-symbols ido-mode yaml-mode use-package terraform-doc tangotango-theme tango-plus-theme sws-mode solarized-theme smex rotate pretty-symbols prettify-greek paredit pandoc-mode org nodejs-repl mustache-mode molokai-theme moe-theme mbo70s-theme markdown-mode magit logview json-mode jade-mode intero inf-clojure idle-highlight-mode highlight-parentheses grunt grip-mode go-mode gh-md fic-mode exec-path-from-shell emidje editorconfig dockerfile-mode csv-mode company-terraform color-theme-solarized color-theme-sanityinc-solarized color-theme-emacs-revert-theme color-theme-dg color-theme-complexity color-theme-actress bubbleberry-theme badger-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ac-js2))
- '(safe-local-variable-values
-   '((eval setq clojure-align-forms-automatically nil)
-     (eval setq clojure-align-binding-forms
-	   (append clojure-align-binding-forms
-		   '("mlet" "rlet")))
-     (eval setq clojure-align-forms-automatically 't)
-     (eval setq clojure-align-binding-forms
-	   (append clojure-align-binding-forms
-		   '("mlet" "rlet" "match" "clojure.core.match/match")))))
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "Black" :foreground "#c6c6c6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo"))))
- '(idle-highlight ((t (:box (:line-width -1 :color "grey75"))))))
