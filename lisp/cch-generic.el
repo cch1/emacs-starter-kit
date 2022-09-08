@@ -44,6 +44,19 @@
   (setq backup-directory-alist `(("." . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms `(("." ,temporary-file-directory t))))
 
+;; Adopt a sneaky garbage collection strategy of waiting until idle
+;; time to collect; staving off the collector while the user is
+;; working.  Thanks Doom -
+;; https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-does-doom-start-up-so-quickly
+(use-package gcmh
+  :ensure t
+  :diminish gcmh-mode
+  :custom
+  (gcmh-mode 1)
+  (gcmh-idle-delay 5)
+  (gcmh-high-cons-threshold (* 16 1024 1024))
+  (gc-cons-percentage 0.1))
+
 ;; https://github.com/kuanyui/moe-theme.el/tree/b23975ba57a68f69551424552f484227db8a7b97
 ;; Hideous highlight ruins this customization of the moe theme...
 (use-package moe-theme
