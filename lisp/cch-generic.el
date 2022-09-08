@@ -1,8 +1,3 @@
-;; Reference: https://ianyepan.github.io/posts/setting-up-use-package/
-(eval-when-compile
-  (require 'use-package))
-(require 'bind-key)                ;; if you use any :bind variant
-
 (require 'package)
 (add-to-list 'package-archives
 	     '("gnu" . "http://elpa.gnu.org/packages/") t)
@@ -18,17 +13,36 @@
 (setq package-enable-at-startup nil) ; because we just initialized manually
 
 (unless package-archive-contents
-    (package-refresh-contents))
+  (package-refresh-contents))
 
 ;; Reference: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
 ;; Reference: https://ianyepan.github.io/posts/setting-up-use-package/
+;; Reference https://github.com/Nathan-Furnal/dotemacs/blob/master/init.el
 (unless (package-installed-p 'use-package)
- (package-refresh-contents)
- (package-install 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(use-package bind-key :ensure t :after use-pacakge)
+(use-package diminish :ensure t :after use-pacakge)
 
 (global-auto-revert-mode 1)
 
 '(load-theme 'tango-dark t) ; built into Mac app for Emacs 27.2 and probably much earlier
+
+(use-package emacs
+  :after moe-theme
+  :config
+  (setq-default cursor-type 'bar)
+  (setq-default x-stretch-cursor t) ; https://github.com/anschwa/emacs.d
+  (setq inhibit-startup-screen t)
+  (global-hl-line-mode 1)
+  ;; Auto-save to system temp dir
+  ;; https://www.emacswiki.org/emacs/AutoSave
+  (setq backup-directory-alist `(("." . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms `(("." ,temporary-file-directory t))))
 
 ;; https://github.com/kuanyui/moe-theme.el/tree/b23975ba57a68f69551424552f484227db8a7b97
 ;; Hideous highlight ruins this customization of the moe theme...
@@ -268,20 +282,15 @@
 
 (setq js-indent-level 2)
 
-(setq inhibit-startup-screen t
-      inhibit-splash-screen t
+(setq inhibit-splash-screen t
       debug-on-error nil
       apropos-do-all t
       sentence-end-double-space t
       whitespace-style (quote (face trailing empty)) ;; Only show "lonely" whitespace
-      scroll-step 1
-      backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+      scroll-step 1)
 
 (line-number-mode 1)
 (column-number-mode 1)
-
-;;; https://github.com/anschwa/emacs.d
-(setq-default x-stretch-cursor t)
 
 (use-package origami
   :ensure t
@@ -322,12 +331,5 @@
 (setq frame-title-format
       (list (format "%s %%S: %%j " (system-name))
 	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
-
-;; Auto-save to system temp dir
-;; https://www.emacswiki.org/emacs/AutoSave
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
 
 (provide 'cch-generic)
