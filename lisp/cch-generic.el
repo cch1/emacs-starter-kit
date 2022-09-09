@@ -42,7 +42,7 @@
   ;; Auto-save to system temp dir
   ;; https://www.emacswiki.org/emacs/AutoSave
   (setq backup-directory-alist `(("." . ,temporary-file-directory)))
-  (setq auto-save-file-name-transforms `(("." ,temporary-file-directory t))))
+  (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))))
 
 ;; Adopt a sneaky garbage collection strategy of waiting until idle
 ;; time to collect; staving off the collector while the user is
