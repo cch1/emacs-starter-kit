@@ -204,28 +204,9 @@
   :diminish subword-mode
   :hook (((prog-mode cider-repl-mode) . subword-mode)))
 
-(use-package smex
-  :ensure t
-  :bind (("M-x" . smex)
-	 ("M-X" . smex-major-mode-commands)
-	 ("C-c C-c M-x" . execute-extended-command)) ; This is 'regular' M-x.
-  :config
-  (global-unset-key (kbd "C-z")) ; C-x before C-z to really suspend-frame
-  (smex-initialize))
-
-;; Inspiration: https://github.com/technomancy/emacs-starter-kit/blob/v2/starter-kit-misc.el
-(use-package ido ; ido is built-in since at least 24.3
-  :ensure t
-  :init (setq ido-enable-prefix nil
-	      ido-enable-flex-matching t
-	      ido-auto-merge-work-directories-length nil
-	      ido-create-new-buffer 'always
-	      ido-use-filename-at-point 'guess
-	      ido-use-virtual-buffers t
-	      ido-handle-duplicate-virtual-buffers 2
-	      ido-max-prospects 10)
-  :config
-  (ido-mode t))
+(use-package icomplete
+  :ensure nil
+  :config (fido-vertical-mode 1))
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (require 'mouse)
