@@ -25,7 +25,7 @@
   				       cch/prettify-set
   				       prettify-greek-lower prettify-greek-upper
   				       '(("#{}" . ?∅)
-  					 ("fn" . ?ƒ) ("=>" . ?⟹)
+  					 ("fn" . ?ƒ)
   					 ("partial" . ?∂) ("comp" . ?∘) ("complement" . ?∁))))
   (local-set-key (kbd "{") 'paredit-open-curly))
 
@@ -37,14 +37,6 @@
     ("\\(#\\){[^}]"	; sets, but not the empty set
      (0 (progn (compose-region (match-beginning 1)
 			       (match-end 1) "∈")
-	       nil)))
-    ("\\(->\\)[^>]"	; thread, but not thread-last
-     (0 (progn (compose-region (match-beginning 1)
-			       (match-end 1) "→")
-	       nil)))
-    ("\\(->>\\)"		; thread-last
-     (0 (progn (compose-region (match-beginning 1)
-			       (match-end 1) '(?→ (Br . Bc) ?→))
 	       nil)))))
 
 (defun lcs-prompt-for-jack-in-options (orig-fn project-type)
