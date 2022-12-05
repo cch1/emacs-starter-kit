@@ -10,6 +10,7 @@
 	   (append clojure-align-binding-forms
 		   '("mlet" "rlet")))
      (eval setq clojure-align-forms-automatically nil))))
+(setq-default fill-column 144)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
