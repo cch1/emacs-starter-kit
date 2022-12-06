@@ -255,9 +255,6 @@
 
 (set-frame-parameters)
 
-;; http://xahlee.info/emacs/emacs/emacs_hyper_super_keys.html
-(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
-
 ;; Allow moving amongst windows with natural arrow keys + Super (Command/Flower on OSX)
 (use-package windmove
   :demand
