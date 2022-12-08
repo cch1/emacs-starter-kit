@@ -171,7 +171,10 @@
 ;; https://tbellisiv.gitbooks.io/clojure-emacs-cider-intro/content/Spiking_Cider/Eldoc.html
 (use-package eldoc
   :ensure t
-  :hook ((prog-mode cider-mode cider-repl-mode) . eldoc-mode))
+  :hook ((prog-mode cider-mode cider-repl-mode) . eldoc-mode)
+  :init (eldoc-add-command
+	 'paredit-backward-delete
+	 'paredit-close-round))
 
 ;; https://tbellisiv.gitbooks.io/clojure-emacs-cider-intro/content/Spiking_Cider/Paredit.html
 (use-package paredit
