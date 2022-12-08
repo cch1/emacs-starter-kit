@@ -184,7 +184,10 @@
 	 (ruby-mode))
   :config (show-paren-mode t)
   :bind (("M-[" . paredit-wrap-square)
-	 ("M-{" . paredit-wrap-curly))
+	 ("M-{" . paredit-wrap-curly)
+	 :map paredit-mode-map
+	 ("C-M-<right>" . paredit-forward)
+	 ("C-M-<left>" . paredit-backward))
   :diminish nil)
 
 (use-package whitespace
