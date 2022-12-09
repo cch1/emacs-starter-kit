@@ -190,7 +190,11 @@
 	 ("M-{" . paredit-wrap-curly)
 	 :map paredit-mode-map
 	 ("C-M-<right>" . paredit-forward)
-	 ("C-M-<left>" . paredit-backward))
+	 ("C-M-<left>" . paredit-backward)
+	 ;; This works around a clash between paredit and cider
+	 ;; Reference: https://clojurians.slack.com/archives/C0617A8PQ/p1669499882069549
+	 ("RET" . nil)
+	 ("C-j" . nil))
   :diminish nil)
 
 (use-package whitespace
