@@ -94,6 +94,10 @@
 	cider-stacktrace-default-filters '(tooling dup)
 	cider-use-overlays nil ; Show eval results in minibuffer instead of inline
 	nrepl-buffer-name-show-port t)
+  :bind ((:map cider-repl-mode-map
+	       ("M-s-<up>" . cider-repl-previous-input)
+	       ("M-s-<down>" . cider-repl-next-input)
+	       ("M-RET" . cider-repl-closing-return)))
   :config
   (advice-add 'cider-jack-in-global-options :around #'lcs-prompt-for-jack-in-options)
   (lisp-editing-behavior))
