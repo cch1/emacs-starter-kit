@@ -58,7 +58,7 @@
 (use-package emacs
   :after moe-theme
   :config
-  (setq-default cursor-type 'bar)
+  (setq-default cursor-type 'box)
   (setq-default x-stretch-cursor t) ; https://github.com/anschwa/emacs.d
   (setq inhibit-startup-screen t)
   (global-hl-line-mode 1)
