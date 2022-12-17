@@ -357,4 +357,7 @@
       (list (format "%s %%S: %%j " (system-name))
 	    '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
+(use-package winner
+  :config (winner-mode 1))
+
 (provide 'cch-generic)
