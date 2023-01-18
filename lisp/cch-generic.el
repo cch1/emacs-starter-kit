@@ -220,7 +220,7 @@
 ;; https://tbellisiv.gitbooks.io/clojure-emacs-cider-intro/content/Spiking_Cider/Indentation.html
 (use-package aggressive-indent
   :ensure t
-  :hook ((prog-mode cider-mode cider-repl-mode emacs-lisp) . aggressive-indent-mode))
+  :hook (global-aggressive-indent-mode))
 
 (use-package highlight-parentheses
   :ensure t
