@@ -3,7 +3,7 @@
   ;; (setq ls-lisp-use-insert-directory-program nil)
   ;; Either the above two commands or the following three commands should
   ;; be used on darwin due to incompatibilities with the built-in ls command.
-  (setq insert-directory-program "/usr/local/bin/gls")
+  (setq insert-directory-program "/opt/homebrew/bin/gls")
   (setq dired-listing-switches "-aBhl --group-directories-first")
   (setq dired-use-ls-dired nil)
   (when (member "Fira Code" (font-family-list))
