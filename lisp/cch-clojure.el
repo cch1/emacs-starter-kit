@@ -80,7 +80,7 @@
   :pin melpa-stable
   :init
   (setq cider-auto-select-error-buffer t
-	cider-clojure-cli-global-options "-A:dev"
+	cider-clojure-cli-global-options "-M:dev:test"
 	cider-popup-stacktraces nil
 	cider-prompt-save-file-on-load nil ; C-c C-k
 	cider-redirect-server-output-to-repl nil ; per Bozhidar https://github.com/clojure-emacs/cider/pull/1907#issuecomment-475938304
