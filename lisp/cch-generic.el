@@ -25,6 +25,9 @@
 (eval-when-compile
   (require 'use-package))
 
+(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen) ; legacy MacOS Standard, available on external USB keyboard
+(global-set-key (kbd "H-f") 'toggle-frame-fullscreen) ; MacOS Standard, but not available on external USB keyboard
+
 (use-package ligature
   :config
   ;; Enable traditional ligature support in eww-mode, if the
