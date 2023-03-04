@@ -80,7 +80,6 @@
   :pin melpa-stable
   :init
   (setq cider-auto-select-error-buffer t
-	cider-clojure-cli-global-options "-M:dev:test"
 	cider-popup-stacktraces nil
 	cider-prompt-save-file-on-load nil ; C-c C-k
 	cider-redirect-server-output-to-repl nil ; per Bozhidar https://github.com/clojure-emacs/cider/pull/1907#issuecomment-475938304
@@ -90,7 +89,7 @@
 	cider-repl-history-file "~/.emacs.d/cache/cider-history"
 	cider-repl-pop-to-buffer-on-connect t
 	cider-repl-popup-stacktraces t
-	cider-repl-print-length 100
+	cider-repl-print-length 200
 	cider-stacktrace-default-filters '(tooling dup)
 	cider-use-overlays nil ; Show eval results in minibuffer instead of inline
 	nrepl-buffer-name-show-port t)
@@ -101,5 +100,8 @@
   :config
   (advice-add 'cider-jack-in-global-options :around #'lcs-prompt-for-jack-in-options)
   (lisp-editing-behavior))
+
+(put 'cider-clojure-cli-aliases 'safe-local-variable (lambda (x) t))
+(put 'cider-clojure-cli-global-options 'safe-local-variable (lambda (x) t))
 
 (provide 'cch-clojure)
