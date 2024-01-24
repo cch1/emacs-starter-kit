@@ -5,6 +5,8 @@
   ;; be used on darwin due to incompatibilities with the built-in ls command.
   (setq insert-directory-program "/opt/homebrew/bin/gls")
   (setq dired-listing-switches "-aBhl --group-directories-first")
+  ;; ensure initial window is not forced into the background by MacOS >= Sonoma
+  (select-frame-set-input-focus (selected-frame))
   (setq dired-use-ls-dired nil)
   (when (member "Fira Code" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Fira Code-14"))
