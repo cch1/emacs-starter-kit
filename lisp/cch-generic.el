@@ -363,4 +363,14 @@
 (use-package winner
   :config (winner-mode 1))
 
+(defun magit-display-buffer-pop-up-frame (buffer)
+  (if (with-current-buffer buffer (eq major-mode 'magit-status-mode))
+      (display-buffer buffer
+                      '((display-buffer-reuse-window
+                         display-buffer-pop-up-frame)
+                        (reusable-frames . t)))
+    (magit-display-buffer-traditional buffer)))
+
+(setq magit-display-buffer-function #'magit-display-buffer-pop-up-frame)
+
 (provide 'cch-generic)
