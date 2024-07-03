@@ -323,10 +323,10 @@
 (use-package origami
   :ensure t
   :config (global-origami-mode)
-  :bind (("M-<kp-multiply>" . origami-open-all-nodes)
-	 ("M-<kp-divide>" . origami-close-all-nodes)
-	 ("M-<kp-add>" . origami-show-node)
-	 ("M-<kp-subtract>" . origami-close-node)))
+  :bind (("<f5>" . origami-open-all-nodes)
+	 ("<f6>" . origami-show-node)
+	 ("<f7>" . origami-close-node)
+	 ("<f8>" . origami-close-all-nodes)))
 
 (use-package git-gutter
   :ensure t
