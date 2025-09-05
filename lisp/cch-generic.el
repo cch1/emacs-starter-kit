@@ -15,18 +15,19 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Reference: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
-;; Reference: https://ianyepan.github.io/posts/setting-up-use-package/
-;; Reference https://github.com/Nathan-Furnal/dotemacs/blob/master/init.el
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 (eval-when-compile
   (require 'use-package))
 
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen) ; legacy MacOS Standard, available on external USB keyboard
 (global-set-key (kbd "H-f") 'toggle-frame-fullscreen) ; MacOS Standard, but not available on external USB keyboard
+
+;; Reference: https://www.jamescherti.com/bufferfile-el-delete-or-rename-buffer-file-names-with-their-associated-buffers/
+(use-package bufferfile
+  :ensure t
+  :vc (:url "https://github.com/jamescherti/bufferfile.el"
+	    :rev :newest)
+  :config
+  (setq bufferfile-use-vc t))
 
 (use-package ligature
   :config
@@ -218,6 +219,7 @@
 ;; https://tbellisiv.gitbooks.io/clojure-emacs-cider-intro/content/Spiking_Cider/Auto_Completion.html
 (use-package company
   :ensure t
+  ;; :pin melpa-stable
   :hook ((prog-mode cider-mode cider-repl-mode) . company-mode))
 
 ;; https://tbellisiv.gitbooks.io/clojure-emacs-cider-intro/content/Spiking_Cider/Indentation.html
