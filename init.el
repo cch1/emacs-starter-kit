@@ -14,7 +14,8 @@
   (set-fontset-font t 'symbol (font-spec :family "Apple Symbols") nil 'prepend)
   (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
   (setq mac-function-modifier 'hyper) ; does not work on external (USB) keyboards!
-  (setq mac-right-option-modifier 'hyper))
+  (setq mac-right-option-modifier 'hyper)
+  (setq mac-left-option-modifier 'hyper))
 
 (put 'erase-buffer 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
