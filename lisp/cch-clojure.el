@@ -39,11 +39,6 @@
 			       (match-end 1) "∈")
 	       nil)))))
 
-(defun lcs-prompt-for-jack-in-options (orig-fn project-type)
-  (interactive)
-  (let ((res (funcall orig-fn project-type)))
-    (read-string "Additional options: " res)))
-
 ;; https://github.com/admiralbumblebee/cider-rebl
 ;; Similar to C-x C-e, but sends to REBL
 (defun rebl-eval-last-sexp ()
@@ -75,10 +70,18 @@
   (mapc (lambda (mode) (font-lock-add-keywords mode clojurey-mode-keywords)) '(clojure-mode clojurescript-mode clojurec-mode))
   (setq scroll-conservatively 101))
 
+(defun lcs-prompt-for-jack-in-options (orig-fn &rest args)
+  (let ((current-prefix-arg '(4)))
+    (apply orig-fn args)))
+
+(defun enso/cider-fix-tooltips () ; https://github.com/clojure-emacs/cider/issues/3748#issuecomment-4061298624
+  (when (eq window-system 'ns) ;; is macos
+    (setq-local use-system-tooltips t)))
+
 (use-package cider
   :ensure t
   :pin melpa-stable
-  :init
+  :init ; before the package loads
   (setq cider-auto-select-error-buffer t
 	cider-popup-stacktraces nil
 	cider-prompt-save-file-on-load nil ; C-c C-k
@@ -86,19 +89,22 @@
 	cider-repl-buffer-size-limit 100000
 	cider-repl-display-help-banner nil ; suppress start-up help banner
 	;; cider-repl-display-in-current-window t
-	cider-repl-history-file "~/.emacs.d/cache/cider-history"
-	cider-repl-pop-to-buffer-on-connect t
+	cider-repl-history-file 'per-project ; https://docs.cider.mx/cider/repl/configuration.html#repl-history
+	cider-repl-pop-to-buffer-on-connect 'display-only
 	cider-repl-popup-stacktraces t
 	cider-repl-print-length 200
 	cider-stacktrace-default-filters '(tooling dup)
 	cider-use-overlays nil ; Show eval results in minibuffer instead of inline
+	cider-clojure-cli-global-aliases ""
 	nrepl-buffer-name-show-port t)
+  :hook ((cider-mode . enso/cider-fix-tooltips))				;
   :bind ((:map cider-repl-mode-map
 	       ("M-s-<up>" . cider-repl-previous-input)
 	       ("M-s-<down>" . cider-repl-next-input)
 	       ("M-RET" . cider-repl-closing-return)))
   :config
-  (advice-add 'cider-jack-in-global-options :around #'lcs-prompt-for-jack-in-options)
+  (advice-add 'cider-jack-in :around 'lcs-prompt-for-jack-in-options)
+  (advice-add 'cider-jack-in-clj :around 'lcs-prompt-for-jack-in-options)
   (lisp-editing-behavior))
 
 (put 'cider-clojure-cli-aliases 'safe-local-variable (lambda (x) t))
