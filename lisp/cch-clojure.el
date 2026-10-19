@@ -90,6 +90,7 @@
 	cider-repl-display-help-banner nil ; suppress start-up help banner
 	;; cider-repl-display-in-current-window t
 	cider-repl-history-file 'per-project ; https://docs.cider.mx/cider/repl/configuration.html#repl-history
+	cider-repl-history-size 1000
 	cider-repl-pop-to-buffer-on-connect 'display-only
 	cider-repl-popup-stacktraces t
 	cider-repl-print-length 200
