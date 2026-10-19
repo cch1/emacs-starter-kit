@@ -6,6 +6,8 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(use-package elisp-dev-mcp :ensure t)
+
 (require 'pretty-symbols)
 (add-hook 'emacs-lisp-mode-hook (lambda ()
 				  (paredit-mode t)

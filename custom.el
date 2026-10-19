@@ -14,7 +14,9 @@
 	    moe-theme molokai-theme mustache-mode nodejs-repl origami ox-gfm pandoc-mode paredit prettify-greek pretty-symbols rotate smex
 	    solarized-theme sws-mode tango-plus-theme tangotango-theme terraform-doc transient which-key yaml-mode))
  '(safe-local-variable-values
-   '((eval append clojure-align-binding-forms '("match")) (eval append clojure-align-binding-forms '("mlet" "rlet" "match"))
+   '((eval define-clojure-indent (u/log 0) (u/trace 0) (h/html 0) (m/search 0) (m/find 0) (m/match 0) (m/rewrite 0) (meander/search 0)
+	   (meander/find 0) (meander/match 0) (meander/rewrite 0) (pxx 1) (assert! 0) (synchronize 0))
+     (eval append clojure-align-binding-forms '("match")) (eval append clojure-align-binding-forms '("mlet" "rlet" "match"))
      (org-publish-project-alist
       ("gh-notes" :base-directory "." :base-extension "org" :exclude "setup.org" :publishing-directory "../gh-pages" :recursive t
        :publishing-function org-html-publish-to-html :headline-levels 4 :auto-preamble t)
