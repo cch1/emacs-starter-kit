@@ -21,6 +21,9 @@
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen) ; legacy MacOS Standard, available on external USB keyboard
 (global-set-key (kbd "H-f") 'toggle-frame-fullscreen) ; MacOS Standard, but not available on external USB keyboard
 
+(use-package direnv
+  :config
+  (direnv-mode))
 ;; Reference: https://www.jamescherti.com/bufferfile-el-delete-or-rename-buffer-file-names-with-their-associated-buffers/
 (use-package bufferfile
   :ensure t
@@ -364,6 +367,16 @@
 
 (use-package winner
   :config (winner-mode 1))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (setq exec-path-from-shell-variables
+        '("PATH"
+          "MANPATH"
+          "ANTHROPIC_API_KEY"))
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 (defun magit-display-buffer-pop-up-frame (buffer)
   (if (with-current-buffer buffer (eq major-mode 'magit-status-mode))
