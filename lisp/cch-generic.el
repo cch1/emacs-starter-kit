@@ -351,7 +351,7 @@
   :hook ((text-mode . bug-reference-mode)
 	 (prog-mode . bug-reference-prog-mode)))
 
-;; (server-start)
+(server-start)
 
 ;; PReviously it just was to work around a bug in OSX with visible bell not.
 ;; restoring screen properly.  Now I prefer it to an actual beep
