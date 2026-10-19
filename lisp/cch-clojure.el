@@ -1,25 +1,9 @@
 ;; https://github.com/clojure-emacs/clojure-mode/#indentation-options
 ;; http://cider.readthedocs.io/en/latest/indent_spec/
-(defun before-save-unprettify ()
-  (save-excursion
-    ;; re-indent without prettify
-    (prettify-symbols-mode -1)
-    (indent-region (point-min) (point-max))
-    ;; Trim trailing whitespace on write buffer.
-    ;; Note that trailing newlines at the end of the file are NOT trimmed.
-    (delete-trailing-whitespace)))
-
-(defun after-save-reprettify ()
-  (save-excursion
-    ;; re-indent with prettify
-    (prettify-symbols-mode 't)
-    (indent-region (point-min) (point-max))
-    (set-buffer-modified-p nil)))
-
+;; Note: before-save/after-save prettify hooks are installed globally via
+;; cch/prettify-save-hooks in cch-generic.el, hooked to prettify-symbols-mode-hook.
 (defun lisp-editing-behavior ()
   ;; https://github.com/jwiegley/use-package/issues/668
-  (add-hook 'before-save-hook #'before-save-unprettify nil t)
-  (add-hook 'after-save-hook  #'after-save-reprettify nil t)
   ;; prettify-symbols-alist is buffer-local and must be set in a hook.
   (setq prettify-symbols-alist (append cch/prettify-logical cch/prettify-relational
   				       cch/prettify-set
@@ -27,7 +11,15 @@
   				       '(("#{}" . ?∅)
   					 ("fn" . ?ƒ)
   					 ("partial" . ?∂) ("comp" . ?∘) ("complement" . ?∁))))
-  (local-set-key (kbd "{") 'paredit-open-curly))
+  (local-set-key (kbd "{") 'paredit-open-curly)
+  ;; prettify-symbols-mode bakes its font-lock keywords from
+  ;; prettify-symbols-alist at activation time (via prog-mode-hook), which
+  ;; fires before clojure-mode-hook runs lisp-editing-behavior and populates
+  ;; the alist above.  Toggling the mode here forces it to re-read the now-
+  ;; complete alist and recompile its keywords, so all symbols render.
+  (when prettify-symbols-mode
+    (prettify-symbols-mode -1)
+    (prettify-symbols-mode +1)))
 
 (defvar clojurey-mode-keywords
   '(("\\(#\\)("		; anonymous function
@@ -65,6 +57,23 @@
 
 (use-package clojure-mode
   :ensure t
+  ;; clojure-indent-style controls how continuation lines of a call form are
+  ;; indented when arguments don't fit on the first line.  The three options:
+  ;;
+  ;;   'always-indent   – always 2 spaces from the opening paren (Lisp style)
+  ;;   'align-arguments – align under first arg if it's on the same line,
+  ;;                      otherwise fall back to 2-space indent (clojure-mode default)
+  ;;   'always-align    – always align under the first argument (cljfmt default)
+  ;;
+  ;; cljfmt uses 'always-align, so we match it here to avoid indentation
+  ;; conflicts between live editing and the cljfmt pre-commit hook.
+  ;;
+  ;; References:
+  ;;   https://github.com/clojure-emacs/clojure-mode#indentation-options
+  ;;   https://github.com/weavejester/cljfmt#indentation-types  (see :inner/:block)
+  ;;   https://docs.cider.mx/cider/config/indentation.html
+  :custom
+  (clojure-indent-style 'always-align)
   :hook ((clojure-mode . lisp-editing-behavior))
   :init
   (mapc (lambda (mode) (font-lock-add-keywords mode clojurey-mode-keywords)) '(clojure-mode clojurescript-mode clojurec-mode))
@@ -98,6 +107,29 @@
 	cider-use-overlays nil ; Show eval results in minibuffer instead of inline
 	cider-clojure-cli-global-aliases ""
 	nrepl-buffer-name-show-port t)
+  ;; cider-dynamic-indentation controls whether CIDER queries the connected
+  ;; nREPL for :style/indent metadata on vars and uses it to dynamically
+  ;; override clojure-indent-function properties at runtime.
+  ;;
+  ;; This is disabled for two reasons:
+  ;;
+  ;; 1. cljfmt ignores :style/indent metadata entirely -- it only uses its own
+  ;;    :extra-indents rules from .cljfmt.edn.  If CIDER applies a library's
+  ;;    :style/indent hint and it differs from .cljfmt.edn, Emacs and cljfmt
+  ;;    disagree: the pre-commit hook reformats what Emacs just wrote.
+  ;;
+  ;; 2. Dynamic indentation overrides define-clojure-indent entries set in
+  ;;    .dir-locals.el (which mirror .cljfmt.edn).  A CIDER connection would
+  ;;    silently undo that carefully maintained alignment.
+  ;;
+  ;; With this set to nil, CIDER defers to the static define-clojure-indent
+  ;; rules, keeping live editing, on-save re-indentation, and cljfmt in sync.
+  ;;
+  ;; References:
+  ;;   https://docs.cider.mx/cider/config/indentation.html
+  ;;   https://github.com/weavejester/cljfmt#indentation-types
+  :custom
+  (cider-dynamic-indentation nil)
   :hook ((cider-mode . enso/cider-fix-tooltips))				;
   :bind ((:map cider-repl-mode-map
 	       ("M-s-<up>" . cider-repl-previous-input)

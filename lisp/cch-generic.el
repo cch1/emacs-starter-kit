@@ -294,8 +294,44 @@
 (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
 (global-set-key (kbd "<kp-enter>") 'newline)
 
+;; When prettify-symbols-mode is active, glyphs are shorter than their raw
+;; text (e.g. `and` → `∧`).  indent-region uses current-column which counts
+;; display widths including compositions, so indentation calculated with
+;; prettify ON differs from indentation calculated with prettify OFF.  To keep
+;; raw (on-disk) indentation correct for external tools while keeping visual
+;; indentation aligned to what the user sees, we:
+;;   • before save: disable prettify, re-indent to raw positions, save
+;;   • after save:  re-enable prettify, force synchronous fontification
+;;                  (font-lock-ensure) so compositions are applied before
+;;                  re-indenting to visual positions
+;;
+;; font-lock-ensure is required because enabling prettify-symbols-mode only
+;; schedules lazy re-fontification; without it, indent-region runs before
+;; compositions are applied and sees raw positions, leaving visual indentation
+;; misaligned.
+(defun cch/before-save-unprettify ()
+  (when prettify-symbols-mode
+    (save-excursion
+      (prettify-symbols-mode -1)
+      (indent-region (point-min) (point-max))
+      (delete-trailing-whitespace))))
+
+(defun cch/after-save-reprettify ()
+  (save-excursion
+    (prettify-symbols-mode +1)
+    (font-lock-ensure)
+    (indent-region (point-min) (point-max))
+    (set-buffer-modified-p nil)))
+
+(defun cch/prettify-save-hooks ()
+  "Install buffer-local save hooks to maintain raw/visual indentation parity."
+  (add-hook 'before-save-hook #'cch/before-save-unprettify nil t)
+  (add-hook 'after-save-hook  #'cch/after-save-reprettify nil t))
+
 (use-package prog-mode
   :hook (((prog-mode cider-mode) . prettify-symbols-mode)))
+
+(add-hook 'prettify-symbols-mode-hook #'cch/prettify-save-hooks)
 
 (use-package prettify-greek
   :ensure t)
