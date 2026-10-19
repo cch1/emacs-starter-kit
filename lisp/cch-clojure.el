@@ -108,6 +108,10 @@
   (advice-add 'cider-jack-in-clj :around 'lcs-prompt-for-jack-in-options)
   (lisp-editing-behavior))
 
+(use-package eca
+  :vc (:url "https://github.com/editor-code-assistant/eca-emacs" :rev :newest)
+  :custom (eca-chat-auto-add-repomap t))
+
 (put 'cider-clojure-cli-aliases 'safe-local-variable (lambda (x) t))
 (put 'cider-clojure-cli-global-options 'safe-local-variable (lambda (x) t))
 
