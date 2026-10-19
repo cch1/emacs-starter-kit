@@ -64,6 +64,8 @@
 
 (use-package emacs
   :after moe-theme
+  :custom
+  (indent-tabs-mode nil) ; this is the default; note that cljfmt indents with spaces
   :config
   (setq-default cursor-type 'box)
   (setq-default x-stretch-cursor t) ; https://github.com/anschwa/emacs.d
