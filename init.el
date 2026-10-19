@@ -20,6 +20,9 @@
 (put 'erase-buffer 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
+(desktop-save-mode 1)
+(setq desktop-auto-save-timeout 60)
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load-file custom-file)
 
