@@ -31,6 +31,7 @@
 (add-to-list 'load-path (locate-user-emacs-file "lisp/"))
 (require 'cch-generic)
 (require 'cch-emacs-lisp)
+(require 'cch-eca)
 (require 'cch-clojure)
 (require 'cch-clojurescript)
 (require 'cch-javascript)
