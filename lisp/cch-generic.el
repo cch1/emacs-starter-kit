@@ -389,7 +389,7 @@
   :hook ((text-mode . bug-reference-mode)
 	 (prog-mode . bug-reference-prog-mode)))
 
-(server-start)
+(unless (daemonp) (server-start))
 
 ;; PReviously it just was to work around a bug in OSX with visible bell not.
 ;; restoring screen properly.  Now I prefer it to an actual beep
@@ -413,7 +413,7 @@
         '("PATH"
           "MANPATH"
           "ANTHROPIC_API_KEY"))
-  (when (memq window-system '(mac ns x))
+  (when (or (memq window-system '(mac ns x)) (daemonp))
     (exec-path-from-shell-initialize)))
 
 (defun magit-display-buffer-pop-up-frame (buffer)
